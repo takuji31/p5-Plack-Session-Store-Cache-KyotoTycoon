@@ -1,6 +1,6 @@
 =head1 NAME
 
-Plack::Session::Store::Cache::KyotoTycoon -
+Plack::Session::Store::Cache::KyotoTycoon - Session store for Plack::Session::Store which uses Cache::KyotoTycoon
 
 =head1 SYNOPSIS
 
@@ -8,13 +8,15 @@ Plack::Session::Store::Cache::KyotoTycoon -
 
 =head1 DESCRIPTION
 
-Plack::Session::Store::Cache::KyotoTycoon is
+Plack::Session::Store::Cache::KyotoTycoon is Session store for Plack::Session::Store which uses Cache::KyotoTycoon
 
 =head1 AUTHOR
 
 Nishibayashi Takuji E<lt>takuji {at} senchan.jpE<gt>
 
 =head1 SEE ALSO
+
+Plack::Middleware::Session Cache::KyotoTycoon
 
 =head1 LICENSE
 
