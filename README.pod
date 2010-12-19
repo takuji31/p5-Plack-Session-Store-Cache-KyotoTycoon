@@ -4,7 +4,20 @@ Plack::Session::Store::Cache::KyotoTycoon - Session store for Plack::Session::St
 
 =head1 SYNOPSIS
 
+  use Plack::Builder;
   use Plack::Session::Store::Cache::KyotoTycoon;
+  use MyApp::App;
+  my $app = MyApp::Web->app;
+  builder {
+      enable 'Session',
+          store => Plack::Session::Store::Cache::KyotoTycoon->new(
+              host => '127.0.0.1',
+              port => 1978,
+              db   => 0,
+          );
+      $app;
+  };
+
 
 =head1 DESCRIPTION
 
