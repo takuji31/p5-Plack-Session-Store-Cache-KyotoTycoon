@@ -8,23 +8,30 @@ our $VERSION = '0.01';
 
 sub new {
     my $class = shift;
-    my $kt    = Cache::KyotoTycoon->new(%_);
-    bless { kt => $kt }, $class;
+    my $opts    = {%_};
+    bless { opts => $opts }, $class;
+}
+
+sub kt {
+    my $self = shift;
+    Cache::KyotoTycoon->new(%{$self->{opts}});
 }
 
 sub fetch {
     my ( $self, $session_id ) = @_;
-    decode_json( $self->{kt}->get($session_id) || '{}' );
+    my $data = $self->kt->get($session_id);
+    return unless defined $data;
+    decode_json($data);
 }
 
 sub store {
     my ( $self, $session_id, $session ) = @_;
-    $self->{kt}->set( $session_id, encode_json($session) );
+    $self->kt->set( $session_id, encode_json($session) );
 }
 
 sub remove {
     my ( $self, $session_id ) = @_;
-    $self->{kt}->remove($session_id);
+    $self->kt->remove($session_id);
 }
 
 1;
